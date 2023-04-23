@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module PUBLIC "-//OpenMRS//DTD OpenMRS Config 1.2//EN" "http://resources.openmrs.org/doctype/config-1.2.dtd">
+
+<module configVersion="1.2">
+    <!-- Base Module Properties -->
+    <id>cdss</id>
+    <name>MIMIC OpenMRS CDSS</name>
+    <version>1.0.0</version>
+    <package>org.openmrs.module.cdss</package>
+    <author>Saptarshi P</author>
+    <description>
+        A clinical decision support module based on automatic cohorts and machine learning
+    </description>
+    <activator>${project.parent.groupId}.${project.parent.artifactId}.CdssActivator</activator>
+
+    <!-- /Base Module Properties -->
+    <require_version>1.5.0.7125</require_version>
+
+    <aware_of_modules>
+        <aware_of_module>org.openmrs.module.legacyui</aware_of_module>
+    </aware_of_modules>
+	
+    <!-- Extensions -->
+    <extension>
+        <point>org.openmrs.patientDashboardTab</point>
+        <class>${project.parent.groupId}.${project.parent.artifactId}.extension.html.CdssTab</class>
+    </extension>
+
+    <!-- Settings -->
+    <globalProperty>
+        <property>cdss.dashboard.token</property>
+        <defaultValue></defaultValue>
+        <description>The token to authenticate jupyter notebook</description>
+    </globalProperty>
+
+    <!-- Privileges -->
+    <privilege>
+        <name>Run Cdss</name>
+        <description>The user can access the CDSS iPython Dashboard</description>
+    </privilege>
+
+    <!-- Internationalization -->
+    <!-- All message codes should start with cdss.* -->
+    <messages>
+        <lang>en</lang>
+        <file>messages.properties</file>
+    </messages>
+    <messages>
+        <lang>fr</lang>
+        <file>messages_fr.properties</file>
+    </messages>
+    <messages>
+        <lang>es</lang>
+        <file>messages_es.properties</file>
+    </messages>
+    <!-- /Internationalization -->
+</module>
+
